@@ -136,8 +136,8 @@ void heap_extract_max_chamado(HeapItens *heap) {
     // Ajusta de cima para baixo
     heapify_down(heap, 0);
 
-    printf("--CHAMADO ATENDIDO--");
-    printf("ID: %d || Prioridade: %d || Descricao: %s", id, max_prioridade, desc);
+    printf("--CHAMADO ATENDIDO--\n");
+    printf("ID: %d || Prioridade: %d || Descricao: %s\n", id, max_prioridade, desc);
 }
 
 void heap_show_next_chamado(HeapItens *heap) {
@@ -151,15 +151,15 @@ void heap_show_next_chamado(HeapItens *heap) {
     char desc[TAM_DESC];
     strcpy(desc, heap->itens[0].descricao);
 
-    printf("--PROXIMO CHAMADO--");
-    printf("ID: %d || Prioridade: %d || Descricao: %s", id, max_prioridade, desc);
+    printf("--PROXIMO CHAMADO--\n");
+    printf("ID: %d || Prioridade: %d || Descricao: %s\n", id, max_prioridade, desc);
 }
 
 // Imprime o heap
 void print_heap(HeapItens *heap) {
-    printf("CHAMADOS PENDENTES: ");
+    printf("CHAMADOS PENDENTES: \n");
     for (int i = 0; i < heap->tamanho; i++) {
-        printf("Prioridade: %d, ID: %d, Descricao: %s", heap->itens[i].prioridade, heap->itens[i].id, heap->itens[i].descricao);
+        printf("Prioridade: %d, ID: %d, Descricao: %s\n", heap->itens[i].prioridade, heap->itens[i].id, heap->itens[i].descricao);
     }
     printf("\n");
 }
@@ -202,8 +202,7 @@ int main() {
                 heap_extract_max_chamado(&chamados);
                 break;
             case 3:
-                printf("Maior prioridade: ");
-                heap_extract_max_prioridade(&chamados);
+                printf("Maior prioridade: %d", heap_extract_max_prioridade(&chamados));
                 break;
             case 4:
                 heap_show_next_chamado(&chamados);
