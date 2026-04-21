@@ -81,7 +81,7 @@ void heap_insert(HeapItens *heap, int value, int id, char desc[]) {
     }
 
     if(value < 0){
-        printf("Erro: prioridade tem que ser um valor inteiro positivo");
+        printf("Erro: prioridade tem que ser um valor inteiro positivo\n");
         return;
     }
     //Verificando se a descrição inserida está de acordo com o tamanho máximo suportado
@@ -157,6 +157,10 @@ void heap_show_next_chamado(HeapItens *heap) {
 
 // Imprime o heap
 void print_heap(HeapItens *heap) {
+    if(heap->tamanho == 0){
+        printf("Tudo em ordem, não há chamados pendentes!\n");
+        return;
+    }
     printf("CHAMADOS PENDENTES: \n");
     for (int i = 0; i < heap->tamanho; i++) {
         printf("Prioridade: %d, ID: %d, Descricao: %s\n", heap->itens[i].prioridade, heap->itens[i].id, heap->itens[i].descricao);
@@ -171,7 +175,7 @@ int main() {
     int opcao;
 
     do{
-        printf(" ");
+        printf("\n");
         printf("CENTRAL DE SUPORTE TECNICO\n");
         printf("1 - Inserir chamado\n");
         printf("2 - Atender chamado mais prioritário\n");
@@ -179,7 +183,7 @@ int main() {
         printf("4 - Exibir próximo chamado\n");   
         printf("5 - Listar todos os chamados pendentes\n");
         printf("6 - Encerrar programa\n");    
-        printf(" ");  
+        printf("\n");  
         printf("Escolha uma opcao pelo numero: \n");
         scanf("%d", &opcao);
 
@@ -202,7 +206,7 @@ int main() {
                 heap_extract_max_chamado(&chamados);
                 break;
             case 3:
-                printf("Maior prioridade: %d", heap_extract_max_prioridade(&chamados));
+                printf("Maior prioridade: %d\n", heap_extract_max_prioridade(&chamados));
                 break;
             case 4:
                 heap_show_next_chamado(&chamados);
@@ -211,10 +215,10 @@ int main() {
                 print_heap(&chamados);
                 break;
             case 6:
-                printf("Encerrando programa...");
+                printf("Encerrando programa...\n");
                 break;
             default:
-                printf("Opcao invalida, tente novamente!");
+                printf("Opcao invalida, tente novamente!\n");
                 break;
         }
     }while(opcao != 6);
